@@ -22,5 +22,4 @@ class DrawLine(AbstractShape):
             if len(self.keypoints1) > 1:
                 cv2.line(forgery, (int(keypoint1[0]), int(keypoint1[1])), (int(keypoint2[0]), int(keypoint2[1])),self.color, 1)
 
-
         self.image = forgery
