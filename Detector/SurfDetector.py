@@ -1,11 +1,6 @@
-from Detector.AbstractFeatureDetector import AbstractDetector
 import cv2
-
 from Detector.Detector import AbsDetector
-from Detector.MatchFeature.Match import Match_Features
-from DrawFunctions.Rectangle import DrawRectangle
-from DrawFunctions.Line import DrawLine
-
+from Detector.AbstractFeatureDetector import AbstractDetector
 
 class SurfDetector(AbstractDetector):
     # Green
@@ -20,11 +15,13 @@ class SurfDetector(AbstractDetector):
         self.detectFeature()
         self.detector()
 
+    #feature detect(descriptors and keypoints)
     def detectFeature(self):
         sift = cv2.SURF_create() #burayı surf create yap
         gray = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
         self.key_points, self.descriptors = sift.detectAndCompute(gray, None)
 
+    # copy-move forgery detection with surf
     def detector(self):
         detector = AbsDetector(self.image,self.key_points,self.descriptors,self.distance,self.color)
         self.image = detector.image

@@ -18,13 +18,13 @@ class SiftDetector(AbstractDetector):
         self.detectFeature()
         self.detector()
 
-
+    # detect keypoints and descriptors
     def detectFeature(self):
         sift = cv2.SIFT_create()
         gray = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
         self.key_points, self.descriptors = sift.detectAndCompute(gray, None)
 
-
+    # copy-move forgery detection with sift
     def detector(self):
         detector = AbsDetector(self.image,self.key_points,self.descriptors,self.distance,self.color)
         self.image = detector.image
