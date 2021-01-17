@@ -73,7 +73,7 @@ class Facade(metaclass=SingletonMeta):
 
         self.actionAkaze = QtWidgets.QAction(MainWindow)
         icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap("icons/akazex.jpeg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon4.addPixmap(QtGui.QPixmap("icons/akaze.jpeg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionAkaze.setIcon(icon4)
         self.actionAkaze.setObjectName("actionAkaze")
 
