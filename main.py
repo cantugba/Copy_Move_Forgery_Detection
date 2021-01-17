@@ -1,7 +1,7 @@
 
 from PyQt5 import QtWidgets
 
-from SingletonGui import Facade
+from FacadeGui import Facade
 
 if __name__ == '__main__':
     import sys
