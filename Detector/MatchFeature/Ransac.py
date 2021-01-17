@@ -2,7 +2,6 @@ import cv2
 from math import sqrt
 import numpy as np
 
-
 def Ransac(mkp1, mkp2):
     inliers1 = []
     inliers2 = []

@@ -15,13 +15,13 @@ class Facade(metaclass=SingletonMeta):
 
     # boyut, resmi yeniden boyutlandırmak için stajyer numarasıdır, resim aynı en boy oranı korunarak yeniden boyutlandırılır
     # numpy Resim gösterimi ve yedeklenen resmi geri alma
-    size = 500
+    size = 720
     NPundo = np.empty((2, 2))
     NPimg = np.empty((2, 2))
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(636, 617)
+        MainWindow.resize(720, 720)
         MainWindow.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
         MainWindow.setMouseTracking(False)
         MainWindow.setStyleSheet("border-color: rgb(255, 255, 255);\n"
