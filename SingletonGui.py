@@ -11,7 +11,7 @@ import numpy as np
 from Singleton import SingletonMeta
 
 
-class Ui_MainWindow(metaclass=SingletonMeta):
+class Facade(metaclass=SingletonMeta):
 
     # boyut, resmi yeniden boyutlandırmak için stajyer numarasıdır, resim aynı en boy oranı korunarak yeniden boyutlandırılır
     # numpy Resim gösterimi ve yedeklenen resmi geri alma

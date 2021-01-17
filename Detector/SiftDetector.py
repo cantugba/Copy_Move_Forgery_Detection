@@ -1,6 +1,6 @@
 from Detector.AbstractDetector import AbstractDetector
 import cv2
-from Detector.MatchFeature.Match import Match_Feature
+from Detector.MatchFeature.Match import Match_Features
 from DrawFunctions.Rectangle import DrawRectangle
 from DrawFunctions.Line import DrawLine
 
@@ -10,6 +10,7 @@ class SiftDetector(AbstractDetector):
     key_points = None
     descriptors = None
     color = (0, 0, 255)
+    distance = cv2.NORM_L2
 
     def __init__(self, image):
         self.image = image
@@ -24,7 +25,8 @@ class SiftDetector(AbstractDetector):
 
 
     def detector(self):
-        points1, points2,cRectangle = Match_Feature(self.key_points,self.descriptors)
-        draw = DrawRectangle(self.image, points1, points2, self.color, cRectangle)
+        match = Match_Features(self.key_points,self.descriptors,self.distance)
+
+        draw = DrawRectangle(self.image, match.gPoint1, match.gPoint2, self.color, match.cRectangle)
         #draw = DrawLine(self.image,keypoints1 = points1, keypoints2 = points2,color=self.color)
         self.image = draw.image

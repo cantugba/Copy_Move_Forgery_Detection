@@ -1,22 +1,22 @@
 
 from PyQt5 import QtWidgets
 
-from SingletonGui import Ui_MainWindow
+from SingletonGui import Facade
 
 if __name__ == '__main__':
     import sys
 
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    u2 = Ui_MainWindow()
+    ui = Facade()
+    u2 = Facade()
 
     #singleton test
     if id(ui) == id(u2):
         print("Singleton çalışır, her iki değişken de aynı örneği içerir")
 
     else:
-        print("birden fazla örnek, singleton çalışmadı!!!!!!!!")
+        print("birden fazla örnek, singleton çalışmadı!")
 
     ui.setupUi(MainWindow)
     MainWindow.show()

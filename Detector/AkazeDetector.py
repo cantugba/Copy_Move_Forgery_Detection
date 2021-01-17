@@ -1,8 +1,8 @@
 from Detector.AbstractDetector import AbstractDetector
 import cv2
-from Detector.MatchFeature.Match import Match_Feature
-from DrawFunctions.Line import DrawLine
+from Detector.MatchFeature.Match import Match_Features
 from DrawFunctions.Rectangle import DrawRectangle
+from DrawFunctions.Line import DrawLine
 
 
 class AkazeDetector(AbstractDetector):
@@ -11,7 +11,7 @@ class AkazeDetector(AbstractDetector):
     key_points = None
     descriptors = None
     color = (255, 0, 0)
-
+    distance = cv2.NORM_HAMMING
     def __init__(self, image):
         self.image = image
         self.detectFeature()
@@ -23,8 +23,8 @@ class AkazeDetector(AbstractDetector):
         self.key_points, self.descriptors = sift.detectAndCompute(gray, None)
 
     def detector(self):
-        points1, points2,cRectangle = Match_Feature(self.key_points,self.descriptors)
-        draw = DrawRectangle(self.image, points1, points2,self.color,cRectangle)
-        # draw = DrawLine(self.image,keypoints1 = points1, keypoints2 = points2,color=self.color) #draw line
+        match = Match_Features(self.key_points,self.descriptors,self.distance)
+        draw = DrawRectangle(self.image, match.gPoint1, match.gPoint2, self.color, match.cRectangle)
+        #draw = DrawLine(self.image,keypoints1 = points1, keypoints2 = points2,color=self.color)
         self.image = draw.image
 
