@@ -1,10 +1,6 @@
 import cv2
-import cv2
 from scipy.spatial.distance import pdist
-import cv2
-from math import sqrt
 import numpy as np
-from matplotlib import pyplot as plt
 from .Ransac import Ransac
 
 class Match_Features():
@@ -43,9 +39,5 @@ class Match_Features():
                     mkp1.append(self.keypoints[temp.queryIdx])
                     mkp2.append(self.keypoints[temp.trainIdx])
 
-        # p1 = np.float32([kp1.pt for kp1 in mkp1])
-        #
-        # p2 = np.float32([kp2.pt for kp2 in mkp2])
-        # return p1,p2
         # ransaclı
         self.gPoint1, self.gPoint2, self.cRectangle = Ransac(mkp1, mkp2)
