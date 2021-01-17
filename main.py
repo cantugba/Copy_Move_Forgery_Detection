@@ -1,6 +1,4 @@
-
 from PyQt5 import QtWidgets
-
 from FacadeGui import Facade
 
 if __name__ == '__main__':
