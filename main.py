@@ -16,7 +16,7 @@ if __name__ == '__main__':
         print("Singleton çalışır, her iki değişken de aynı örneği içerir")
 
     else:
-        print("birden fazla örnek, singleton çalışmadı")
+        print("birden fazla örnek, singleton çalışmadı!!!!!!!!")
 
     ui.setupUi(MainWindow)
     MainWindow.show()
