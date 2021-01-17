@@ -6,14 +6,13 @@ import numpy as np
 
 def Ransac(mkp1, mkp2):
     p1 = np.float32([kp1.pt for kp1 in mkp1])
-
     p2 = np.float32([kp2.pt for kp2 in mkp2])
 
     homography, status = cv2.findHomography(p1, p2, cv2.RANSAC, 5.0)
 
     inliers1 = []
     inliers2 = []
-    sayac, rec = 0, 0
+    count, rec = 0, 0
     inliers_thresold = 2.5  # Eşitlik kontrolü ile değişkenleri belirlemek için mesafe eşiği
 
     # Birinci anahtar noktanın projeksiyonundan ikinci kilit noktaya olan mesafe eşikten azsa, homografi modeline uyar.
@@ -31,11 +30,12 @@ def Ransac(mkp1, mkp2):
                         pow(col[1, 0] - mkp2[i].pt[1], 2))
 
         if distance < inliers_thresold:
-            sayac = sayac + 1
+            count = count + 1
 
-    if sayac * 2.5 < len(mkp1):
+    if count * 2.5 < len(mkp1):
         inliers_thresold = 339
         rec = 3
+
     for i, m in enumerate(mkp1):
 
         col = np.ones((3, 1), dtype=np.float64)
@@ -53,6 +53,7 @@ def Ransac(mkp1, mkp2):
 
     print('# eslesme:                            \t', len(mkp1))
     print('# Inliers yani verilen homografiye uyan eşleşmeler:                            \t', len(inliers1))
+
     gPoints1 = np.float32([kp1.pt for kp1 in inliers1])
     gPoints2 = np.float32([kp2.pt for kp2 in inliers2])
 

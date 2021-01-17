@@ -1,6 +1,5 @@
 from DrawFunctions.AbstractShape import AbstractShape
 import cv2
-from PIL import Image, ImageDraw
 import numpy as np
 
 class DrawRectangle(AbstractShape):
@@ -10,6 +9,7 @@ class DrawRectangle(AbstractShape):
     keypoints2 = None
     color = None
     cRectangle = None
+
     def __init__(self, image, keypoints1, keypoints2, color,cRectangle):
         self.image = image
         self.keypoints1 = keypoints1
