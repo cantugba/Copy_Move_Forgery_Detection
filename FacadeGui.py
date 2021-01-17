@@ -12,7 +12,6 @@ from Singleton import SingletonMeta
 
 
 class Facade(metaclass=SingletonMeta):
-
     # boyut, resmi yeniden boyutlandırmak için stajyer numarasıdır, resim aynı en boy oranı korunarak yeniden boyutlandırılır
     # numpy Resim gösterimi ve yedeklenen resmi geri alma
     size = 720
@@ -66,36 +65,36 @@ class Facade(metaclass=SingletonMeta):
         self.actionSave.setObjectName("actionSave")
 
         self.actionSurf = QtWidgets.QAction(MainWindow)
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("icons/surf.jpeg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.actionSurf.setIcon(icon2)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("icons/surf.jpeg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionSurf.setIcon(icon1)
         self.actionSurf.setObjectName("actionSurf")
 
         self.actionAkaze = QtWidgets.QAction(MainWindow)
-        icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap("icons/akaze.jpeg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.actionAkaze.setIcon(icon4)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("icons/akaze.jpeg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionAkaze.setIcon(icon2)
         self.actionAkaze.setObjectName("actionAkaze")
 
         self.actionSift = QtWidgets.QAction(MainWindow)
-        icon8 = QtGui.QIcon()
-        icon8.addPixmap(QtGui.QPixmap("icons/sift.jpeg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.actionSift.setIcon(icon8)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap("icons/sift.jpeg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionSift.setIcon(icon3)
         self.actionSift.setObjectName("actionSift")
 
         self.actionZoomIn = QtWidgets.QAction(MainWindow)
-        icon9 = QtGui.QIcon()
-        icon9.addPixmap(QtGui.QPixmap("icons/zoom_in.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.actionZoomIn.setIcon(icon9)
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap("icons/zoom_in.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionZoomIn.setIcon(icon4)
         self.actionZoomIn.setObjectName("actionZoomIn")
 
         self.actionExit = QtWidgets.QAction(MainWindow)
         self.actionExit.setObjectName("actionExit")
 
         self.actionZoomOut = QtWidgets.QAction(MainWindow)
-        icon10 = QtGui.QIcon()
-        icon10.addPixmap(QtGui.QPixmap("icons/zoom_out.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.actionZoomOut.setIcon(icon10)
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap("icons/zoom_out.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actionZoomOut.setIcon(icon5)
         self.actionZoomOut.setObjectName("actionZoomOut")
 
         self.menuMenu.addAction(self.actionOpen)
