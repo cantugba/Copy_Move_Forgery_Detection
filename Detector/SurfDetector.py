@@ -1,5 +1,7 @@
-from Detector.AbstractDetector import AbstractDetector
+from Detector.AbstractFeatureDetector import AbstractDetector
 import cv2
+
+from Detector.Detector import AbsDetector
 from Detector.MatchFeature.Match import Match_Features
 from DrawFunctions.Rectangle import DrawRectangle
 from DrawFunctions.Line import DrawLine
@@ -24,7 +26,5 @@ class SurfDetector(AbstractDetector):
         self.key_points, self.descriptors = sift.detectAndCompute(gray, None)
 
     def detector(self):
-        match = Match_Features(self.key_points,self.descriptors,self.distance)
-        draw = DrawRectangle(self.image, match.gPoint1, match.gPoint2, self.color, match.cRectangle)
-        #draw = DrawLine(self.image,keypoints1 = points1, keypoints2 = points2,color=self.color)
-        self.image = draw.image
+        detector = AbsDetector(self.image,self.key_points,self.descriptors,self.distance,self.color)
+        self.image = detector.image

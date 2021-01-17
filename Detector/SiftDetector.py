@@ -1,5 +1,5 @@
 import cv2
-from Detector.AbstractDetector import AbstractDetector
+from Detector.AbstractFeatureDetector import AbstractDetector
 from Detector.Detector import AbsDetector
 from Detector.MatchFeature.Match import Match_Features
 from DrawFunctions.Rectangle import DrawRectangle
