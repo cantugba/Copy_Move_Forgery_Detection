@@ -3,18 +3,17 @@ from math import sqrt
 import numpy as np
 
 
-
 def Ransac(mkp1, mkp2):
+    inliers1 = []
+    inliers2 = []
+    count, rec = 0, 0
+
     p1 = np.float32([kp1.pt for kp1 in mkp1])
     p2 = np.float32([kp2.pt for kp2 in mkp2])
 
     homography, status = cv2.findHomography(p1, p2, cv2.RANSAC, 5.0)
 
-    inliers1 = []
-    inliers2 = []
-    count, rec = 0, 0
     inliers_thresold = 2.5  # Eşitlik kontrolü ile değişkenleri belirlemek için mesafe eşiği
-
     # Birinci anahtar noktanın projeksiyonundan ikinci kilit noktaya olan mesafe eşikten azsa, homografi modeline uyar.
     # inliers için yeni bir eşleşme veriseti oluşturulur eşleşmeleri çizdirmek için gerekli
 
