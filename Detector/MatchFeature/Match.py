@@ -12,7 +12,6 @@ class Match_Features():
     gPoint2 = None
     cRectangle = None
 
-
     def __init__(self,keypoints,descriptors,distances):
         self.keypoints = keypoints
         self.descriptors = descriptors

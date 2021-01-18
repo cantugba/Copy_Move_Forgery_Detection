@@ -8,7 +8,6 @@ class DrawLine(AbstractShape):
     keypoints2 = None
     color = None
 
-
     def __init__(self,image,keypoints1, keypoints2,color):
         self.image = image
         self.keypoints1 = keypoints1

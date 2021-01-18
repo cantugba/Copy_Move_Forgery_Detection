@@ -18,7 +18,6 @@ class DrawRectangle(AbstractShape):
         self.cRectangle = cRectangle # counts of rectangle
         self.draw()
 
-
     def draw(self):
         newimage = self.image.copy()
 
