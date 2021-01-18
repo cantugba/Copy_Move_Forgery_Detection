@@ -10,7 +10,6 @@ from PIL import Image
 import numpy as np
 from Singleton import SingletonMeta
 
-
 class Facade(metaclass=SingletonMeta):
     # boyut, resmi yeniden boyutlandırmak için stajyer numarasıdır, resim aynı en boy oranı korunarak yeniden boyutlandırılır
     # numpy Resim gösterimi ve yedeklenen resmi geri alma
@@ -93,10 +92,10 @@ class Facade(metaclass=SingletonMeta):
         self.toolBar.addAction(self.actionSift)
         self.toolBar.addAction(self.actionZoomIn)
         self.toolBar.addAction(self.actionZoomOut)
-        self.retranslateUi(MainWindow)
+        self.translateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-    def retranslateUi(self, MainWindow):
+    def translateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "CMDF"))
         self.menuMenu.setTitle(_translate("MainWindow", "Menu"))
