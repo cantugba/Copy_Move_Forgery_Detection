@@ -1,4 +1,4 @@
-import tkinter as tk # tkinter dosya işlemleri için
+import tkinter as tk  # tkinter dosya işlemleri için
 from Detector.AkazeDetector import AkazeDetector
 from Detector.SiftDetector import SiftDetector
 from Detector.SurfDetector import SurfDetector
@@ -9,6 +9,7 @@ import cv2
 from PIL import Image
 import numpy as np
 from GUI.Singleton import SingletonMeta
+
 
 class Facade(metaclass=SingletonMeta):
     # boyut, resmi yeniden boyutlandırmak için stajyer numarasıdır, resim aynı en boy oranı korunarak yeniden boyutlandırılır
@@ -95,9 +96,9 @@ class Facade(metaclass=SingletonMeta):
         self.translateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-    def translateUi(self, MainWindow):
+    def translateUi(self, main_window):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "CMDF"))
+        main_window.setWindowTitle(_translate("MainWindow", "CMDF"))
         self.menuMenu.setTitle(_translate("MainWindow", "Menu"))
         self.toolBar.setWindowTitle(_translate("MainWindow", "İşlemler"))
         self.actionOpen.setText(_translate("MainWindow", "Resim Seç"))
@@ -123,14 +124,13 @@ class Facade(metaclass=SingletonMeta):
         self.actionAkaze.triggered.connect(self.AKAZE)
         self.actionSift.triggered.connect(self.SIFT)
         self.actionUndo.triggered.connect(self.undo)
-        self.actionExit.triggered.connect(self.exitp)
+        self.actionExit.triggered.connect(self.exit)  # programı sonlandır
         self.actionSurf.triggered.connect(self.SURF)
         self.actionZoomOut.triggered.connect(self.zoomOut)
         self.actionZoomIn.triggered.connect(self.zoomIn)
         self.actionSave.triggered.connect(self.saveImage)
 
-    # programı sonlandır
-    def exitp(self):
+    def exit(self):
         exit()
 
     # yapılan işlemi geri al
@@ -190,17 +190,17 @@ class Facade(metaclass=SingletonMeta):
                                                      filetypes=(("jpeg files", "*.jpeg"), ("all files", "*.*")))
         if root.filename:
             try:
-                saveIMG = Image.fromarray(self.NPimg.astype('uint8'))
-                saveIMG.save(root.filename)
+                save_img = Image.fromarray(self.NPimg.astype('uint8'))
+                save_img.save(root.filename)
             except ValueError:
-                saveIMG = Image.fromarray(self.NPimg.astype('uint8'))
-                saveIMG.save(root.filename + '.png')
-
+                save_img = Image.fromarray(self.NPimg.astype('uint8'))
+                save_img.save(root.filename + '.png')
 
     # Qt etiketindeki görüntüyü gösterir, boyut self.size'den türetilir (daha büyük ve daha küçük olarak değiştirilebilir)
-    def showImage(self, NPimgShow):
-        image_profile = QtGui.QImage(NPimgShow, NPimgShow.shape[1], NPimgShow.shape[0], NPimgShow.shape[1] * 3,
+
+    def showImage(self, img_show):
+        image_profile = QtGui.QImage(img_show, img_show.shape[1], img_show.shape[0], img_show.shape[1] * 3,
                                      QtGui.QImage.Format_RGB888)  # QImage object
         image_profile = image_profile.scaled(self.size, self.size, aspectRatioMode=QtCore.Qt.KeepAspectRatio,
-                                             transformMode=QtCore.Qt.SmoothTransformation)  # görüntüyü ölçeklendirmek ve En Boy Oranını korumak için
+                                             transformMode=QtCore.Qt.SmoothTransformation)   # görüntüyü ölçeklendirmek ve En Boy Oranını korumak için
         self.label.setPixmap(QtGui.QPixmap.fromImage(image_profile))
