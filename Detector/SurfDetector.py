@@ -15,13 +15,13 @@ class SurfDetector(AbstractDetector):
         self.detectFeature()
         self.detector()
 
-    #feature detect(descriptors and keypoints)
+    # feature detect(descriptors and keypoints)
     def detectFeature(self):
-        sift = cv2.SURF_create() #burayı surf create yap
+        sift = cv2.SURF_create()  # burayı surf create yap
         gray = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
         self.key_points, self.descriptors = sift.detectAndCompute(gray, None)
 
     # copy-move forgery detection with surf
     def detector(self):
-        detector = AbsDetector(self.image,self.key_points,self.descriptors,self.distance,self.color)
+        detector = AbsDetector(self.image, self.key_points, self.descriptors, self.distance, self.color)
         self.image = detector.image

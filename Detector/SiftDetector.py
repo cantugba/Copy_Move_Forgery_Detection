@@ -3,7 +3,7 @@ from Detector.AbstractFeatureDetector import AbstractDetector
 from Detector.Detector import AbsDetector
 
 class SiftDetector(AbstractDetector):
-    #blue
+    # blue
     image = None
     key_points = None
     descriptors = None
@@ -23,5 +23,5 @@ class SiftDetector(AbstractDetector):
 
     # copy-move forgery detection with sift
     def detector(self):
-        detector = AbsDetector(self.image,self.key_points,self.descriptors,self.distance,self.color)
+        detector = AbsDetector(self.image, self.key_points, self.descriptors, self.distance, self.color)
         self.image = detector.image

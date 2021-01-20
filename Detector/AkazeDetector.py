@@ -23,6 +23,5 @@ class AkazeDetector(AbstractDetector):
 
     # copy-move forgery detection with akaze
     def detector(self):
-        detector = AbsDetector(self.image,self.key_points,self.descriptors,self.distance,self.color)
+        detector = AbsDetector(self.image, self.key_points, self.descriptors, self.distance, self.color)
         self.image = detector.image
-

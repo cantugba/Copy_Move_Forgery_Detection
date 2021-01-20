@@ -1,13 +1,15 @@
 import tkinter as tk  # tkinter dosya işlemleri için
+from tkinter import *
+from tkinter import filedialog
+
+import cv2
+import numpy as np
+from PIL import Image
+from PyQt5 import QtGui, QtWidgets, QtCore
+
 from Detector.AkazeDetector import AkazeDetector
 from Detector.SiftDetector import SiftDetector
 from Detector.SurfDetector import SurfDetector
-from PyQt5 import QtGui, QtWidgets, QtCore
-from tkinter import *
-from tkinter import filedialog
-import cv2
-from PIL import Image
-import numpy as np
 from GUI.Singleton import SingletonMeta
 
 
@@ -18,16 +20,15 @@ class Facade(metaclass=SingletonMeta):
     NPundo = np.empty((2, 2))
     NPimg = np.empty((2, 2))
 
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(720, 720)
-        MainWindow.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
-        MainWindow.setMouseTracking(False)
-        MainWindow.setStyleSheet("border-color: rgb(255, 255, 255);\n"
-                                 "selection-background-color: rgb(135, 171, 255);\n"
-                                 "background-color: rgb(255, 255, 255);\n"
-                                 )
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+    def setupUi(self, main_window):
+        main_window.setObjectName("MainWindow")
+        main_window.resize(720, 720)
+        main_window.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
+        main_window.setMouseTracking(False)
+        main_window.setStyleSheet("border-color: rgb(255, 255, 255);\n"
+                                  "selection-background-color: rgb(135, 171, 255);\n"
+                                  "background-color: rgb(255, 255, 255);\n")
+        self.centralwidget = QtWidgets.QWidget(main_window)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
@@ -36,49 +37,49 @@ class Facade(metaclass=SingletonMeta):
         self.label.setStyleSheet("QLabel{ background-color : rgb(204, 231, 232); color : black; }")
         self.label.setObjectName("label")
         self.verticalLayout_2.addWidget(self.label)
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        main_window.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(main_window)
         self.menubar.setGeometry(QtCore.QRect(1, 5, 636, 21))
         self.menubar.setObjectName("menubar")
         self.menuMenu = QtWidgets.QMenu(self.menubar)
         self.menuMenu.setObjectName("menuMenu")
-        MainWindow.setMenuBar(self.menubar)
-        self.toolBar = QtWidgets.QToolBar(MainWindow)
+        main_window.setMenuBar(self.menubar)
+        self.toolBar = QtWidgets.QToolBar(main_window)
         self.toolBar.setToolButtonStyle(QtCore.Qt.ToolButtonTextUnderIcon)
         self.toolBar.setObjectName("toolBar")
-        MainWindow.addToolBar(QtCore.Qt.LeftToolBarArea, self.toolBar)
-        self.actionOpen = QtWidgets.QAction(MainWindow)
+        main_window.addToolBar(QtCore.Qt.LeftToolBarArea, self.toolBar)
+        self.actionOpen = QtWidgets.QAction(main_window)
         self.actionOpen.setObjectName("actionOpen")
-        self.actionUndo = QtWidgets.QAction(MainWindow)
+        self.actionUndo = QtWidgets.QAction(main_window)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("icons/refresh.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionUndo.setIcon(icon)
         self.actionUndo.setObjectName("actionUndo")
-        self.actionSave = QtWidgets.QAction(MainWindow)
+        self.actionSave = QtWidgets.QAction(main_window)
         self.actionSave.setObjectName("actionSave")
-        self.actionSurf = QtWidgets.QAction(MainWindow)
+        self.actionSurf = QtWidgets.QAction(main_window)
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap("icons/surf.jpeg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionSurf.setIcon(icon1)
         self.actionSurf.setObjectName("actionSurf")
-        self.actionAkaze = QtWidgets.QAction(MainWindow)
+        self.actionAkaze = QtWidgets.QAction(main_window)
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap("icons/akaze.jpeg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionAkaze.setIcon(icon2)
         self.actionAkaze.setObjectName("actionAkaze")
-        self.actionSift = QtWidgets.QAction(MainWindow)
+        self.actionSift = QtWidgets.QAction(main_window)
         icon3 = QtGui.QIcon()
         icon3.addPixmap(QtGui.QPixmap("icons/sift.jpeg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionSift.setIcon(icon3)
         self.actionSift.setObjectName("actionSift")
-        self.actionZoomIn = QtWidgets.QAction(MainWindow)
+        self.actionZoomIn = QtWidgets.QAction(main_window)
         icon4 = QtGui.QIcon()
         icon4.addPixmap(QtGui.QPixmap("icons/zoom_in.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionZoomIn.setIcon(icon4)
         self.actionZoomIn.setObjectName("actionZoomIn")
-        self.actionExit = QtWidgets.QAction(MainWindow)
+        self.actionExit = QtWidgets.QAction(main_window)
         self.actionExit.setObjectName("actionExit")
-        self.actionZoomOut = QtWidgets.QAction(MainWindow)
+        self.actionZoomOut = QtWidgets.QAction(main_window)
         icon5 = QtGui.QIcon()
         icon5.addPixmap(QtGui.QPixmap("icons/zoom_out.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionZoomOut.setIcon(icon5)
@@ -93,8 +94,8 @@ class Facade(metaclass=SingletonMeta):
         self.toolBar.addAction(self.actionSift)
         self.toolBar.addAction(self.actionZoomIn)
         self.toolBar.addAction(self.actionZoomOut)
-        self.translateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.translateUi(main_window)
+        QtCore.QMetaObject.connectSlotsByName(main_window)
 
     def translateUi(self, main_window):
         _translate = QtCore.QCoreApplication.translate
