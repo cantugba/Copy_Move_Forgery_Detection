@@ -8,7 +8,7 @@ class DrawLine(AbstractShape):
     keypoints2 = None
     color = None
 
-    def __init__(self,image,keypoints1, keypoints2,color):
+    def __init__(self, image, keypoints1, keypoints2, color):
         self.image = image
         self.keypoints1 = keypoints1
         self.keypoints2 = keypoints2
@@ -19,7 +19,6 @@ class DrawLine(AbstractShape):
         forgery = self.image.copy()
         for keypoint1, keypoint2 in zip(self.keypoints1, self.keypoints2):
             if len(self.keypoints1) > 1:
-                cv2.line(forgery, (int(keypoint1[0]), int(keypoint1[1])), (int(keypoint2[0]), int(keypoint2[1])),self.color, 1)
-
+                cv2.line(forgery, (int(keypoint1[0]), int(keypoint1[1])), (int(keypoint2[0]), int(keypoint2[1])), self.color, 1)
 
         self.image = forgery
