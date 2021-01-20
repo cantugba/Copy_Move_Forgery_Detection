@@ -10,36 +10,36 @@ class DrawRectangle(AbstractShape):
     color = None
     cRectangle = None
 
-    def __init__(self, image, keypoints1, keypoints2, color,cRectangle):
+    def __init__(self, image, keypoints1, keypoints2, color, cRectangle):
         self.image = image
         self.keypoints1 = keypoints1
         self.keypoints2 = keypoints2
         self.color = color
-        self.cRectangle = cRectangle # counts of rectangle
+        self.cRectangle = cRectangle  # counts of rectangle
         self.draw()
 
     def draw(self):
         newimage = self.image.copy()
 
-        if (self.cRectangle == 0):
+        if self.cRectangle == 0:
             k1x, k2x = np.max(self.keypoints1, axis=0), np.max(self.keypoints2, axis=0)
             k1n, k2n = np.min(self.keypoints1, axis=0), np.min(self.keypoints2, axis=0)
             cv2.rectangle(newimage, (int(k2x[0]) + 10, int(k2n[1]) - 10), (int(k2n[0]) - 10, int(k2x[1]) + 10), self.color, 3)
             cv2.rectangle(newimage, (int(k1x[0]) + 10, int(k1n[1]) - 10), (int(k1n[0]) - 10, int(k1x[1]) + 10), self.color, 3)
             self.image = newimage
-        elif (self.cRectangle == 3):
-            list, z = np.zeros(len(self.keypoints1)), 0
+        elif self.cRectangle == 3:
+            point_list, z = np.zeros(len(self.keypoints1)), 0
             z2, z3, z4 = np.array([[0, 0]]), np.array([[0, 0]]), np.array([[0, 0]])
             for k1, k2 in zip(self.keypoints1, self.keypoints2):
                 if len(self.keypoints1) > 1:
                     p = (k1[0] - k2[0]) / (k1[1] - k2[1])
-                    list[z] = int(p)
+                    point_list[z] = int(p)
                     z = z + 1
             for k1, k2 in zip(self.keypoints1, self.keypoints2):
                 if len(self.keypoints1) > 1:
                     p = (k1[0] - k2[0]) / (k1[1] - k2[1])
                     p = int(p)
-                    if p == max(list):
+                    if p == max(point_list):
                         newrow = [k1[0], k1[1]]
                         z2 = np.vstack([z2, newrow])
                     elif p < 0:
