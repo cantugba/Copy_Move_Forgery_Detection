@@ -1,6 +1,5 @@
 import cv2
-from Detector.AbstractFeatureDetector import AbstractDetector
-from Detector.Detector import AbsDetector
+from Detector.AbstractDetector import AbstractDetector
 
 class AkazeDetector(AbstractDetector):
     # red
@@ -13,15 +12,11 @@ class AkazeDetector(AbstractDetector):
     def __init__(self, image):
         self.image = image
         self.detectFeature()
-        self.detector()
+        super().__init__(self.image)
+
 
     # detect keypoints and descriptors
     def detectFeature(self):
         sift = cv2.AKAZE_create()
         gray = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
         self.key_points, self.descriptors = sift.detectAndCompute(gray, None)
-
-    # copy-move forgery detection with akaze
-    def detector(self):
-        detector = AbsDetector(self.image, self.key_points, self.descriptors, self.distance, self.color)
-        self.image = detector.image
