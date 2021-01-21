@@ -9,14 +9,14 @@ class AbstractDetector(metaclass=ABCMeta):
     color = None
     image = None
     distance = None
-    match = None
-    draw = None
+    MatchFeatures = None
+    Draw = None
     def __init__(self,image):
         self.image = image
-        self.match = MatchFeatures(self.key_points, self.descriptors, self.distance)  # match points
-        self.draw = DrawRectangle(self.image, self.match.gPoint1, self.match.gPoint2, self.color, self.match.cRectangle)  # draw matches
+        self.MatchFeatures = MatchFeatures(self.key_points, self.descriptors, self.distance)  # match points
+        self.Draw = DrawRectangle(self.image, self.MatchFeatures.gPoint1, self.MatchFeatures.gPoint2, self.color, self.MatchFeatures.cRectangle)  # draw matches
         # draw = DrawLine(self.image,  match.gPoint1,  match.gPoint2,self.color)
-        self.image = self.draw.image
+        self.image = self.Draw.image
 
     # detect keypoints and descriptors
     @abstractmethod
