@@ -1,12 +1,10 @@
-import tkinter as tk  # tkinter dosya işlemleri için
-from tkinter import *
-from tkinter import filedialog
-
 import cv2
 import numpy as np
+import tkinter as tk  # tkinter dosya işlemleri için
+from tkinter import *
 from PIL import Image
+from tkinter import filedialog
 from PyQt5 import QtGui, QtWidgets, QtCore
-
 from Detector.AkazeDetector import AkazeDetector
 from Detector.SiftDetector import SiftDetector
 from Detector.SurfDetector import SurfDetector
@@ -30,13 +28,13 @@ class Facade(metaclass=SingletonMeta):
                                   "background-color: rgb(255, 255, 255);\n")
         self.centralwidget = QtWidgets.QWidget(main_window)
         self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.verticalLayout.setObjectName("verticalLayout_2")
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setText("")
         self.label.setStyleSheet("QLabel{ background-color : rgb(204, 231, 232); color : black; }")
         self.label.setObjectName("label")
-        self.verticalLayout_2.addWidget(self.label)
+        self.verticalLayout.addWidget(self.label)
         main_window.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(main_window)
         self.menubar.setGeometry(QtCore.QRect(1, 5, 636, 21))
