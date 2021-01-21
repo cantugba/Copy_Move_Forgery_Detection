@@ -57,6 +57,7 @@ class DrawRectangle(AbstractShape):
         #     cv2.rectangle(newimage, (int(k2x[0]) + 10, int(k2n[1]) - 10), (int(k2n[0]) - 10, int(k2x[1]) + 10), self.color, 3)
         #     cv2.rectangle(newimage, (int(k11x[0]) + 10, int(k11n[1]) - 10), (int(k11n[0]) - 10, int(k11x[1]) + 10), self.color, 3)
         #     cv2.rectangle(newimage, (int(k1x[0]) + 10, int(k1n[1]) - 10), (int(k1n[0]) - 10, int(k1x[1]) + 10), self.color, 3)
+        # self.image = newimage
         elif self.cRectangle == 3:
             egimlist, x = np.empty(0), 0
             reclist1, reclist2, reclist3 = np.empty(shape=[0, 2]), np.empty(shape=[0, 2]), np.empty(shape=[0, 2])
@@ -92,5 +93,5 @@ class DrawRectangle(AbstractShape):
                           self.color, 3)
             cv2.rectangle(newimage, (int(k1x[0]) + 10, int(k1n[1]) - 10), (int(k1n[0]) - 10, int(k1x[1]) + 10),
                           self.color, 3)
-        self.image = newimage
+
         self.image = newimage
