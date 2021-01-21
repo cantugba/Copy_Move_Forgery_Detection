@@ -1,4 +1,5 @@
 from Detector.MatchFeature.Match import MatchFeatures
+from DrawFunctions.Line import DrawLine
 from DrawFunctions.Rectangle import DrawRectangle
 
 class AbsDetector:
@@ -19,5 +20,5 @@ class AbsDetector:
     def detector(self):
         match = MatchFeatures(self.key_points, self.descriptors, self.distance)  # match points
         draw = DrawRectangle(self.image, match.gPoint1, match.gPoint2, self.color, match.cRectangle)  # draw matches
-    #   draw = DrawLine(self.image,keypoints1 = points1, keypoints2 = points2,color=self.color)
+        #draw = DrawLine(self.image,  match.gPoint1,  match.gPoint2,self.color)
         self.image = draw.image
