@@ -38,5 +38,5 @@ class MatchFeatures:
                     mkp1.append(self.key_points[temp.queryIdx])
                     mkp2.append(self.key_points[temp.trainIdx])
 
-        # ransaclı
+        # remove the false matches
         self.gPoint1, self.gPoint2, self.cRectangle = Ransac(mkp1, mkp2)

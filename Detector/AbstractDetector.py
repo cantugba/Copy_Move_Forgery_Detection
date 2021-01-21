@@ -9,8 +9,6 @@ class AbstractDetector(metaclass=ABCMeta):
     color = None
     image = None
     distance = None
-    match = None
-    draw = None
 
     def __init__(self,image):
         self.image = image
