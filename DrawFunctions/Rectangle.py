@@ -12,23 +12,23 @@ class DrawRectangle(AbstractShape):
     color = None
     cRectangle = None
 
-    def __init__(self, image, keypoints1, keypoints2, color, cRectangle):
+    def __init__(self, image, keypoints1, keypoints2, color, count_rectangle):
         self.image = image
         self.keypoints1 = keypoints1
         self.keypoints2 = keypoints2
         self.color = color
-        self.cRectangle = cRectangle  # counts of rectangle
+        self.cRectangle = count_rectangle  # counts of rectangle
         self.draw()
 
-    def draw(self):
-        newimage = self.image.copy()
+    def draw(self, **kwargs):
+        new_image = self.image.copy()
 
         if self.cRectangle == 0:
             k1x, k2x = np.max(self.keypoints1, axis=0), np.max(self.keypoints2, axis=0)
             k1n, k2n = np.min(self.keypoints1, axis=0), np.min(self.keypoints2, axis=0)
-            cv2.rectangle(newimage, (int(k2x[0]) + 10, int(k2n[1]) - 10), (int(k2n[0]) - 10, int(k2x[1]) + 10), self.color, 3)
-            cv2.rectangle(newimage, (int(k1x[0]) + 10, int(k1n[1]) - 10), (int(k1n[0]) - 10, int(k1x[1]) + 10), self.color, 3)
-            self.image = newimage
+            cv2.rectangle(new_image, (int(k2x[0]) + 10, int(k2n[1]) - 10), (int(k2n[0]) - 10, int(k2x[1]) + 10), self.color, 3)
+            cv2.rectangle(new_image, (int(k1x[0]) + 10, int(k1n[1]) - 10), (int(k1n[0]) - 10, int(k1x[1]) + 10), self.color, 3)
+            self.image = new_image
         # elif self.cRectangle == 3:
         #     point_list, z = np.zeros(len(self.keypoints1)), 0
         #     z2, z3, z4 = np.array([[0, 0]]), np.array([[0, 0]]), np.array([[0, 0]])
@@ -54,10 +54,10 @@ class DrawRectangle(AbstractShape):
         #     z2[0], z3[0], z4[0] = k11x, k1x, k2x
         #     k11n, k1n, k2n = np.min(z2, axis=0), np.min(z3, axis=0), np.min(z4, axis=0)
         #
-        #     cv2.rectangle(newimage, (int(k2x[0]) + 10, int(k2n[1]) - 10), (int(k2n[0]) - 10, int(k2x[1]) + 10), self.color, 3)
-        #     cv2.rectangle(newimage, (int(k11x[0]) + 10, int(k11n[1]) - 10), (int(k11n[0]) - 10, int(k11x[1]) + 10), self.color, 3)
-        #     cv2.rectangle(newimage, (int(k1x[0]) + 10, int(k1n[1]) - 10), (int(k1n[0]) - 10, int(k1x[1]) + 10), self.color, 3)
-        # self.image = newimage
+        #     cv2.rectangle(new_image, (int(k2x[0]) + 10, int(k2n[1]) - 10), (int(k2n[0]) - 10, int(k2x[1]) + 10), self.color, 3)
+        #     cv2.rectangle(new_image, (int(k11x[0]) + 10, int(k11n[1]) - 10), (int(k11n[0]) - 10, int(k11x[1]) + 10), self.color, 3)
+        #     cv2.rectangle(new_image, (int(k1x[0]) + 10, int(k1n[1]) - 10), (int(k1n[0]) - 10, int(k1x[1]) + 10), self.color, 3)
+        # self.image = new_image
         elif self.cRectangle == 3:
             egimlist, x = np.empty(0), 0
             reclist1, reclist2, reclist3 = np.empty(shape=[0, 2]), np.empty(shape=[0, 2]), np.empty(shape=[0, 2])
@@ -87,11 +87,11 @@ class DrawRectangle(AbstractShape):
             k1x, k11x, k2x = np.max(reclist2, axis=0), np.max(reclist1, axis=0), np.max(reclist3, axis=0)
             k11n, k1n, k2n = np.min(reclist1, axis=0), np.min(reclist2, axis=0), np.min(reclist3, axis=0)
 
-            cv2.rectangle(newimage, (int(k2x[0]) + 10, int(k2n[1]) - 10), (int(k2n[0]) - 10, int(k2x[1]) + 10),
+            cv2.rectangle(new_image, (int(k2x[0]) + 10, int(k2n[1]) - 10), (int(k2n[0]) - 10, int(k2x[1]) + 10),
                           self.color, 3)
-            cv2.rectangle(newimage, (int(k11x[0]) + 10, int(k11n[1]) - 10), (int(k11n[0]) - 10, int(k11x[1]) + 10),
+            cv2.rectangle(new_image, (int(k11x[0]) + 10, int(k11n[1]) - 10), (int(k11n[0]) - 10, int(k11x[1]) + 10),
                           self.color, 3)
-            cv2.rectangle(newimage, (int(k1x[0]) + 10, int(k1n[1]) - 10), (int(k1n[0]) - 10, int(k1x[1]) + 10),
+            cv2.rectangle(new_image, (int(k1x[0]) + 10, int(k1n[1]) - 10), (int(k1n[0]) - 10, int(k1x[1]) + 10),
                           self.color, 3)
 
-        self.image = newimage
+        self.image = new_image
