@@ -129,7 +129,8 @@ class Facade(metaclass=SingletonMeta):
         self.action_ZoomIn.triggered.connect(self.zoomIn)
         self.action_Save.triggered.connect(self.saveImage)
 
-    def exit(self):
+    @staticmethod
+    def exit():
         exit()
 
     # yapılan işlemi geri al
