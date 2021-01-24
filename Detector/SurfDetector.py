@@ -10,7 +10,6 @@ class SurfDetector(AbstractDetector):
     color = (0, 255, 0)
     distance = cv2.NORM_L2
 
-
     def __init__(self, image):
         self.image = image
         self.detectFeature()

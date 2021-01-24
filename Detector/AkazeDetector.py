@@ -14,7 +14,6 @@ class AkazeDetector(AbstractDetector):
         self.detectFeature()
         super().__init__(self.image)
 
-
     # detect keypoints and descriptors
     def detectFeature(self):
         sift = cv2.AKAZE_create()
