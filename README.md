@@ -1,3 +1,5 @@
-# Copy Move Forgery Detect
+# Copy Move Forgery Detection
 
-Detection of copy-move forgery in an image
+> Detection of copy-move forgery in an image.
+
+### Results
