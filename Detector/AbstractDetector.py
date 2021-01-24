@@ -15,7 +15,7 @@ class AbstractDetector(metaclass=ABCMeta):
         self.image = image
         self.MatchFeatures = MatchFeatures(self.key_points, self.descriptors, self.distance)  # match points
         self.Draw = DrawRectangle(self.image, self.MatchFeatures.gPoint1, self.MatchFeatures.gPoint2, self.color, self.MatchFeatures.cRectangle)  # draw matches
-        # draw = DrawLine(self.image,  match.gPoint1,  match.gPoint2,self.color)
+        #self.Draw = DrawLine(self.image,  self.MatchFeatures.gPoint1,  self.MatchFeatures.gPoint2, self.color)
         self.image = self.Draw.image
 
     # detect keypoints and descriptors
