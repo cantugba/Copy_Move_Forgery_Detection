@@ -1,7 +1,9 @@
 import cv2
-from scipy.spatial.distance import pdist
 import numpy as np
+from scipy.spatial.distance import pdist
+
 from .Ransac import Ransac
+
 
 class MatchFeatures:
 

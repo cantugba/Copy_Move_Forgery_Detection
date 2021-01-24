@@ -1,5 +1,7 @@
 import cv2
+
 from Detector.AbstractDetector import AbstractDetector
+
 
 class AkazeDetector(AbstractDetector):
     # red

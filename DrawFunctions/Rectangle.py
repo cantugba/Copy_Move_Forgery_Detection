@@ -1,8 +1,9 @@
+import cv2
+import numpy as np
 from scipy.stats import stats
 
 from DrawFunctions.AbstractShape import AbstractShape
-import cv2
-import numpy as np
+
 
 class DrawRectangle(AbstractShape):
 

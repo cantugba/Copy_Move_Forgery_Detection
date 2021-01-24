@@ -1,10 +1,12 @@
-import cv2
-import numpy as np
 import tkinter as tk  # tkinter dosya işlemleri için
 from tkinter import *
-from PIL import Image
 from tkinter import filedialog
+
+import cv2
+import numpy as np
+from PIL import Image
 from PyQt5 import QtGui, QtWidgets, QtCore
+
 from Detector.AkazeDetector import AkazeDetector
 from Detector.SiftDetector import SiftDetector
 from Detector.SurfDetector import SurfDetector

@@ -1,5 +1,7 @@
 import cv2
+
 from Detector.AbstractDetector import AbstractDetector
+
 
 # copy-move forgery detection with surf
 class SurfDetector(AbstractDetector):

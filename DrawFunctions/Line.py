@@ -1,5 +1,7 @@
-from DrawFunctions.AbstractShape import AbstractShape
 import cv2
+
+from DrawFunctions.AbstractShape import AbstractShape
+
 
 class DrawLine(AbstractShape):
     image = None
