@@ -14,7 +14,7 @@ class DrawLine(AbstractShape):
         self.color = color
         self.draw()
 
-    def draw(self):
+    def draw(self, **kwargs):
         forgery = self.image.copy()
         for keypoint1, keypoint2 in zip(self.key_points1, self.key_points2):
             if len(self.key_points1) > 1:
