@@ -26,6 +26,7 @@ def Ransac(match_kp1, match_kp2):
         col = np.dot(homography, col)
         col /= col[2, 0]
 
+        #HOMOGRAFİ İLE NOKTA ARASINDA UZAKLIK HESABI YAPILIR
         distance = sqrt(pow(col[0, 0] - match_kp2[i].pt[0], 2) +
                         pow(col[1, 0] - match_kp2[i].pt[1], 2))
 
@@ -38,18 +39,18 @@ def Ransac(match_kp1, match_kp2):
 
     for i, m in enumerate(match_kp1):
 
-        col = np.ones((3, 1), dtype=np.float64)
-        col[0:2, 0] = m.pt
-        col = np.dot(homography, col)
-        col /= col[2, 0]
+            col = np.ones((3, 1), dtype=np.float64)
+            col[0:2, 0] = m.pt
+            col = np.dot(homography, col)
+            col /= col[2, 0]
 
-        distance = sqrt(pow(col[0, 0] - match_kp2[i].pt[0], 2) +
+            distance = sqrt(pow(col[0, 0] - match_kp2[i].pt[0], 2) +
                         pow(col[1, 0] - match_kp2[i].pt[1], 2))
 
-        if distance < inliers_thresold:
-            good_matches.append(cv2.DMatch(len(inliers1), len(inliers2), 0))
-            inliers1.append(match_kp1[i])
-            inliers2.append(match_kp2[i])
+            if distance < inliers_thresold:
+                good_matches.append(cv2.DMatch(len(inliers1), len(inliers2), 0))
+                inliers1.append(match_kp1[i])
+                inliers2.append(match_kp2[i])
 
     print('# eslesme:                            \t', len(match_kp1))
     print('# Inliers yani verilen homografiye uyan eşleşmeler:                            \t', len(inliers1))

@@ -19,6 +19,6 @@ class SurfDetector(AbstractDetector):
 
     # feature detect(descriptors and keypoints)
     def detectFeature(self):
-        sift = cv2.SURF_create()  # burayı surf create yap
+        sift = cv2.SIFT_create()  # burayı surf create yap
         gray = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
         self.key_points, self.descriptors = sift.detectAndCompute(gray, None)

@@ -21,3 +21,4 @@ class AkazeDetector(AbstractDetector):
         sift = cv2.AKAZE_create()
         gray = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
         self.key_points, self.descriptors = sift.detectAndCompute(gray, None)
+        print("akaze",len(self.descriptors[1]))
