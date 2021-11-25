@@ -172,7 +172,7 @@ class Facade(metaclass=SingletonMeta):
     def saveImage(self):
         root = tk.Tk()
         root.withdraw()
-        root.filename = filedialog.asksaveasfilename(initialdir="~/PycharmProjects/Bitirme/Results",
+        root.filename = filedialog.asksaveasfilename(initialdir="~/PycharmProjects",
                                                      title="Resmi Kaydet",
                                                      filetypes=(("jpeg files", "*.jpeg"), ("all files", "*.*")))
         if root.filename:
