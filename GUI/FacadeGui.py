@@ -158,7 +158,7 @@ class Facade(metaclass=SingletonMeta):
         self.backup()
         root = tk.Tk()
         root.withdraw()
-        root.filename = filedialog.askopenfilename(initialdir="~/PycharmProjects",
+        root.filename = filedialog.askopenfilename(initialdir="~",
                                                    title="Dosya Seç",
                                                    filetypes=(("jpeg files", "*.jpeg"), ("all files", "*.*")))
         if root.filename:
@@ -172,7 +172,7 @@ class Facade(metaclass=SingletonMeta):
     def saveImage(self):
         root = tk.Tk()
         root.withdraw()
-        root.filename = filedialog.asksaveasfilename(initialdir="~/PycharmProjects",
+        root.filename = filedialog.asksaveasfilename(initialdir="~",
                                                      title="Resmi Kaydet",
                                                      filetypes=(("jpeg files", "*.jpeg"), ("all files", "*.*")))
         if root.filename:
