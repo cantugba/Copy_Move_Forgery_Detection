@@ -158,7 +158,7 @@ class Facade(metaclass=SingletonMeta):
         self.backup()
         root = tk.Tk()
         root.withdraw()
-        root.filename = filedialog.askopenfilename(initialdir="~/PycharmProjects/Bitirme/Test-Images",
+        root.filename = filedialog.askopenfilename(initialdir="~/PycharmProjects",
                                                    title="Dosya Seç",
                                                    filetypes=(("jpeg files", "*.jpeg"), ("all files", "*.*")))
         if root.filename:
