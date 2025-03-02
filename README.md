@@ -2,6 +2,10 @@
 
 #### Detection of copy-move forgery in an image.
 > In this project, SIFT, SURF and AKAZE methods are used for key point detection. Ransac algorithm ise used to remove wrong matches.
+
+Install Dependencies: Navigate to your project's directory in the terminal and run:​ 
+> pip install -r requirements.txt
+
 ### Results
 > Binary Matched Results
 * Cat
